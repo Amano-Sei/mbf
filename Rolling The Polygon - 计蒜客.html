@@ -1,0 +1,717 @@
+<!DOCTYPE html>
+<!-- saved from url=(0044)https://www.jisuanke.com/contest/2991/261479 -->
+<html lang="zh-cmn-Hans" class="js cssanimations"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><style>.blocklyDraggable {}
+.blocklySvg {
+background-color: #fff;
+outline: none;
+overflow: hidden;
+position: absolute;
+display: block;
+}
+.blocklyWidgetDiv {
+display: none;
+position: absolute;
+z-index: 99999;
+}
+.injectionDiv {
+height: 100%;
+position: relative;
+overflow: hidden;
+touch-action: none
+}
+.blocklyNonSelectable {
+user-select: none;
+-moz-user-select: none;
+-webkit-user-select: none;
+-ms-user-select: none;
+}
+.blocklyWsDragSurface {
+display: none;
+position: absolute;
+top: 0;
+left: 0;
+}
+.blocklyWsDragSurface.blocklyOverflowVisible {
+overflow: visible;
+}
+.blocklyBlockDragSurface {
+display: none;
+position: absolute;
+top: 0;
+left: 0;
+right: 0;
+bottom: 0;
+overflow: visible !important;
+z-index: 50;
+}
+.blocklyTooltipDiv {
+background-color: #ffffc7;
+border: 1px solid #ddc;
+box-shadow: 4px 4px 20px 1px rgba(0,0,0,.15);
+color: #000;
+display: none;
+font-family: sans-serif;
+font-size: 9pt;
+opacity: 0.9;
+padding: 2px;
+position: absolute;
+z-index: 100000;
+}
+.blocklyResizeSE {
+cursor: se-resize;
+fill: #aaa;
+}
+.blocklyResizeSW {
+cursor: sw-resize;
+fill: #aaa;
+}
+.blocklyResizeLine {
+stroke: #888;
+stroke-width: 1;
+}
+.blocklyHighlightedConnectionPath {
+fill: none;
+stroke: #fc3;
+stroke-width: 4px;
+}
+.blocklyPathLight {
+fill: none;
+stroke-linecap: round;
+stroke-width: 1;
+}
+.blocklySelected>.blocklyPath {
+stroke: #fc3;
+stroke-width: 3px;
+}
+.blocklySelected>.blocklyPathLight {
+display: none;
+}
+.blocklyDraggable {
+cursor: url("//res.jisuanke.com/img/blockly/handopen.cur"), auto;
+cursor: grab;
+cursor: -webkit-grab;
+cursor: -moz-grab;
+}
+.blocklyDragging {
+cursor: url("//res.jisuanke.com/img/blockly/handclosed.cur"), auto;
+cursor: grabbing;
+cursor: -webkit-grabbing;
+cursor: -moz-grabbing;
+}
+.blocklyDraggable:active {
+cursor: url("//res.jisuanke.com/img/blockly/handclosed.cur"), auto;
+cursor: grabbing;
+cursor: -webkit-grabbing;
+cursor: -moz-grabbing;
+}
+.blocklyBlockDragSurface .blocklyDraggable {
+cursor: url("//res.jisuanke.com/img/blockly/handclosed.cur"), auto;
+cursor: grabbing;
+cursor: -webkit-grabbing;
+cursor: -moz-grabbing;
+}
+.blocklyDragging.blocklyDraggingDelete {
+cursor: url("//res.jisuanke.com/img/blockly/handdelete.cur"), auto;
+}
+.blocklyToolboxDelete {
+cursor: url("//res.jisuanke.com/img/blockly/handdelete.cur"), auto;
+}
+.blocklyDragging>.blocklyPath,
+.blocklyDragging>.blocklyPathLight {
+fill-opacity: .8;
+stroke-opacity: .8;
+}
+.blocklyDragging>.blocklyPathDark {
+display: none;
+}
+.blocklyDisabled>.blocklyPath {
+fill-opacity: .5;
+stroke-opacity: .5;
+}
+.blocklyDisabled>.blocklyPathLight,
+.blocklyDisabled>.blocklyPathDark {
+display: none;
+}
+.blocklyText {
+cursor: default;
+fill: #fff;
+font-family: sans-serif;
+font-size: 11pt;
+}
+.blocklyNonEditableText>text {
+pointer-events: none;
+}
+.blocklyNonEditableText>rect,
+.blocklyEditableText>rect {
+fill: #fff;
+fill-opacity: .6;
+}
+.blocklyNonEditableText>text,
+.blocklyEditableText>text {
+fill: #000;
+}
+.blocklyEditableText:hover>rect {
+stroke: #fff;
+stroke-width: 2;
+}
+.blocklyBubbleText {
+fill: #000;
+}
+.blocklyFlyout {
+position: absolute;
+z-index: 20;
+}
+.blocklyFlyoutButton {
+fill: #888;
+cursor: default;
+}
+.blocklyFlyoutButtonShadow {
+fill: #666;
+}
+.blocklyFlyoutButton:hover {
+fill: #aaa;
+}
+.blocklyFlyoutLabel {
+cursor: default;
+}
+.blocklyFlyoutLabelBackground {
+opacity: 0;
+}
+.blocklyFlyoutLabelText {
+fill: #000;
+}
+.blocklySvg text, .blocklyBlockDragSurface text {
+user-select: none;
+-moz-user-select: none;
+-webkit-user-select: none;
+cursor: inherit;
+}
+.blocklyHidden {
+display: none;
+}
+.blocklyFieldDropdown:not(.blocklyHidden) {
+display: block;
+}
+.blocklyIconGroup {
+cursor: default;
+}
+.blocklyIconGroup:not(:hover),
+.blocklyIconGroupReadonly {
+opacity: .6;
+}
+.blocklyIconShape {
+fill: #00f;
+stroke: #fff;
+stroke-width: 1px;
+}
+.blocklyIconSymbol {
+fill: #fff;
+}
+.blocklyMinimalBody {
+margin: 0;
+padding: 0;
+}
+.blocklyCommentTextarea {
+background-color: #ffc;
+border: 0;
+margin: 0;
+padding: 2px;
+resize: none;
+}
+.blocklyHtmlInput {
+border: none;
+border-radius: 4px;
+font-family: sans-serif;
+height: 100%;
+margin: 0;
+outline: none;
+padding: 0 1px;
+width: 100%
+}
+.blocklyMainBackground {
+stroke-width: 1;
+stroke: #c6c6c6;
+}
+.blocklyMutatorBackground {
+fill: #fff;
+stroke: #ddd;
+stroke-width: 1;
+}
+.blocklyFlyoutBackground {
+fill: #ddd;
+fill-opacity: .8;
+}
+.blocklyTransparentBackground {
+opacity: 0;
+}
+.blocklyMainWorkspaceScrollbar {
+z-index: 20;
+}
+.blocklyFlyoutScrollbar {
+z-index: 30;
+}
+.blocklyScrollbarHorizontal, .blocklyScrollbarVertical {
+position: absolute;
+outline: none;
+}
+.blocklyScrollbarBackground {
+opacity: 0;
+}
+.blocklyScrollbarHandle {
+fill: #ccc;
+}
+.blocklyScrollbarBackground:hover+.blocklyScrollbarHandle,
+.blocklyScrollbarHandle:hover {
+fill: #bbb;
+}
+.blocklyZoom>image {
+opacity: .4;
+}
+.blocklyZoom>image:hover {
+opacity: .6;
+}
+.blocklyZoom>image:active {
+opacity: .8;
+}
+.blocklyFlyout .blocklyScrollbarHandle {
+fill: #bbb;
+}
+.blocklyFlyout .blocklyScrollbarBackground:hover+.blocklyScrollbarHandle,
+.blocklyFlyout .blocklyScrollbarHandle:hover {
+fill: #aaa;
+}
+.blocklyInvalidInput {
+background: #faa;
+}
+.blocklyAngleCircle {
+stroke: #444;
+stroke-width: 1;
+fill: #ddd;
+fill-opacity: .8;
+}
+.blocklyAngleMarks {
+stroke: #444;
+stroke-width: 1;
+}
+.blocklyAngleGauge {
+fill: #f88;
+fill-opacity: .8;
+}
+.blocklyAngleLine {
+stroke: #f00;
+stroke-width: 2;
+stroke-linecap: round;
+pointer-events: none;
+}
+.blocklyContextMenu {
+border-radius: 4px;
+}
+.blocklyDropdownMenu {
+padding: 0 !important;
+}
+.blocklyWidgetDiv .goog-option-selected .goog-menuitem-checkbox,
+.blocklyWidgetDiv .goog-option-selected .goog-menuitem-icon {
+background: url(//res.jisuanke.com/img/blockly/sprites.png) no-repeat -48px -16px !important;
+}
+.blocklyToolboxDiv {
+background-color: #ddd;
+overflow-x: visible;
+overflow-y: auto;
+position: absolute;
+z-index: 70;
+-webkit-tap-highlight-color: transparent;
+}
+.blocklyTreeRoot {
+padding: 4px 0;
+}
+.blocklyTreeRoot:focus {
+outline: none;
+}
+.blocklyTreeRow {
+height: 22px;
+line-height: 22px;
+margin-bottom: 3px;
+padding-right: 8px;
+white-space: nowrap;
+}
+.blocklyHorizontalTree {
+float: left;
+margin: 1px 5px 8px 0;
+}
+.blocklyHorizontalTreeRtl {
+float: right;
+margin: 1px 0 8px 5px;
+}
+.blocklyToolboxDiv[dir="RTL"] .blocklyTreeRow {
+margin-left: 8px;
+}
+.blocklyTreeRow:not(.blocklyTreeSelected):hover {
+background-color: #e4e4e4;
+}
+.blocklyTreeSeparator {
+border-bottom: solid #e5e5e5 1px;
+height: 0;
+margin: 5px 0;
+}
+.blocklyTreeSeparatorHorizontal {
+border-right: solid #e5e5e5 1px;
+width: 0;
+padding: 5px 0;
+margin: 0 5px;
+}
+.blocklyTreeIcon {
+background-image: url(//res.jisuanke.com/img/blockly/sprites.png);
+height: 16px;
+vertical-align: middle;
+width: 16px;
+}
+.blocklyTreeIconClosedLtr {
+background-position: -32px -1px;
+}
+.blocklyTreeIconClosedRtl {
+background-position: 0px -1px;
+}
+.blocklyTreeIconOpen {
+background-position: -16px -1px;
+}
+.blocklyTreeSelected>.blocklyTreeIconClosedLtr {
+background-position: -32px -17px;
+}
+.blocklyTreeSelected>.blocklyTreeIconClosedRtl {
+background-position: 0px -17px;
+}
+.blocklyTreeSelected>.blocklyTreeIconOpen {
+background-position: -16px -17px;
+}
+.blocklyTreeIconNone,
+.blocklyTreeSelected>.blocklyTreeIconNone {
+background-position: -48px -1px;
+}
+.blocklyTreeLabel {
+cursor: default;
+font-family: sans-serif;
+font-size: 16px;
+padding: 0 3px;
+vertical-align: middle;
+}
+.blocklyToolboxDelete .blocklyTreeLabel {
+cursor: url("//res.jisuanke.com/img/blockly/handdelete.cur"), auto;
+}
+.blocklyTreeSelected .blocklyTreeLabel {
+color: #fff;
+}
+.blocklyWidgetDiv .goog-palette {
+outline: none;
+cursor: default;
+}
+.blocklyWidgetDiv .goog-palette-table {
+border: 1px solid #666;
+border-collapse: collapse;
+}
+.blocklyWidgetDiv .goog-palette-cell {
+height: 13px;
+width: 15px;
+margin: 0;
+border: 0;
+text-align: center;
+vertical-align: middle;
+border-right: 1px solid #666;
+font-size: 1px;
+}
+.blocklyWidgetDiv .goog-palette-colorswatch {
+position: relative;
+height: 13px;
+width: 15px;
+border: 1px solid #666;
+}
+.blocklyWidgetDiv .goog-palette-cell-hover .goog-palette-colorswatch {
+border: 1px solid #FFF;
+}
+.blocklyWidgetDiv .goog-palette-cell-selected .goog-palette-colorswatch {
+border: 1px solid #000;
+color: #fff;
+}
+.blocklyWidgetDiv .goog-menu {
+background: #fff;
+border-color: #ccc #666 #666 #ccc;
+border-style: solid;
+border-width: 1px;
+cursor: default;
+font: normal 13px Arial, sans-serif;
+margin: 0;
+outline: none;
+padding: 4px 0;
+position: absolute;
+overflow-y: auto;
+overflow-x: hidden;
+max-height: 100%;
+z-index: 20000;
+}
+.blocklyWidgetDiv .goog-menuitem {
+color: #000;
+font: normal 13px Arial, sans-serif;
+list-style: none;
+margin: 0;
+padding: 4px 7em 4px 28px;
+white-space: nowrap;
+}
+.blocklyWidgetDiv .goog-menuitem.goog-menuitem-rtl {
+padding-left: 7em;
+padding-right: 28px;
+}
+.blocklyWidgetDiv .goog-menu-nocheckbox .goog-menuitem,
+.blocklyWidgetDiv .goog-menu-noicon .goog-menuitem {
+padding-left: 12px;
+}
+.blocklyWidgetDiv .goog-menu-noaccel .goog-menuitem {
+padding-right: 20px;
+}
+.blocklyWidgetDiv .goog-menuitem-content {
+color: #000;
+font: normal 13px Arial, sans-serif;
+}
+.blocklyWidgetDiv .goog-menuitem-disabled .goog-menuitem-accel,
+.blocklyWidgetDiv .goog-menuitem-disabled .goog-menuitem-content {
+color: #ccc !important;
+}
+.blocklyWidgetDiv .goog-menuitem-disabled .goog-menuitem-icon {
+opacity: 0.3;
+-moz-opacity: 0.3;
+filter: alpha(opacity=30);
+}
+.blocklyWidgetDiv .goog-menuitem-highlight,
+.blocklyWidgetDiv .goog-menuitem-hover {
+background-color: #d6e9f8;
+border-color: #d6e9f8;
+border-style: dotted;
+border-width: 1px 0;
+padding-bottom: 3px;
+padding-top: 3px;
+}
+.blocklyWidgetDiv .goog-menuitem-checkbox,
+.blocklyWidgetDiv .goog-menuitem-icon {
+background-repeat: no-repeat;
+height: 16px;
+left: 6px;
+position: absolute;
+right: auto;
+vertical-align: middle;
+width: 16px;
+}
+.blocklyWidgetDiv .goog-menuitem-rtl .goog-menuitem-checkbox,
+.blocklyWidgetDiv .goog-menuitem-rtl .goog-menuitem-icon {
+left: auto;
+right: 6px;
+}
+.blocklyWidgetDiv .goog-option-selected .goog-menuitem-checkbox,
+.blocklyWidgetDiv .goog-option-selected .goog-menuitem-icon {
+background: url(//ssl.gstatic.com/editor/editortoolbar.png) no-repeat -512px 0;
+}
+.blocklyWidgetDiv .goog-menuitem-accel {
+color: #999;
+direction: ltr;
+left: auto;
+padding: 0 6px;
+position: absolute;
+right: 0;
+text-align: right;
+}
+.blocklyWidgetDiv .goog-menuitem-rtl .goog-menuitem-accel {
+left: 0;
+right: auto;
+text-align: left;
+}
+.blocklyWidgetDiv .goog-menuitem-mnemonic-hint {
+text-decoration: underline;
+}
+.blocklyWidgetDiv .goog-menuitem-mnemonic-separator {
+color: #999;
+font-size: 12px;
+padding-left: 4px;
+}
+.blocklyWidgetDiv .goog-menuseparator {
+border-top: 1px solid #ccc;
+margin: 4px 0;
+padding: 0;
+}
+</style>
+        
+
+<!-- No Baidu Siteapp-->
+<meta http-equiv="Cache-Control" content="no-siteapp">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<!-- Set render engine for 360 browser -->
+<meta name="renderer" content="webkit">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <title>Rolling The Polygon - 计蒜客</title>
+    <link rel="stylesheet" href="./Rolling The Polygon - 计蒜客_files/jsk-widget--242fc2.css">    <link rel="stylesheet" href="./Rolling The Polygon - 计蒜客_files/pack--81244f.css">    <script src="./Rolling The Polygon - 计蒜客_files/hm.js"></script><script>
+                                        var statistics = {};
+                                        statistics.fpt = Date.now() - performance.timing.navigationStart
+                                    </script><style type="text/css">.jsk-modal-dialog .jsk-modal-hd{margin-bottom:1rem}.jsk-modal-dialog .jsk-modal-hd h4{margin-bottom:0}.jsk-modal-bd{border:none;padding-bottom:2rem}.jsk-modal-bd .jsk-modal-prompt-input{margin:2rem auto}</style><style type="text/css">.judge-detail-modal[data-v-82f165f8]{overflow:auto}.judge-detail-modal .jsk-modal-dialog[data-v-82f165f8]{border-radius:5px}</style></head>
+<body class="jsk-without-footer jsk-with-topbar-fixed-top">
+    <!--[if lte IE 9]>
+    <script>location.href='//www.jisuanke.com/601'</script>
+<![endif]-->
+<div class="global-alert" id="global-alert">
+    <div id="global-alert-box" class="jsk-alert jsk-alert-danger jsk-u-sm-centered alert" data-jsk-alert="">
+      <span type="button" class="jsk-close">×</span>
+      <p id="global-alert-msg" class="jsk-icon-info-circle"></p>
+    </div>
+</div>
+<header class="jsk-topbar jsk-topbar-fixed-top">
+    <div class="jsk-container">
+        <h1 class="jsk-topbar-brand jsk-margin-right-lg">
+            <a href="https://www.jisuanke.com/">计蒜客</a>
+        </h1>
+        <div id="jsk-nav-bar" class="jsk-text-center jsk-hide-sm">
+            <ul class="jsk-topbar-nav">
+                <li>
+                    <a href="https://www.jisuanke.com/" class="jsk-text-gray-dark">首页</a>
+                </li>
+                <li>
+                    <a href="https://www.jisuanke.com/course" class="jsk-text-gray-dark">选课中心</a>
+                </li>
+                <li>
+                    <a href="https://i.jisuanke.com/study" class="jsk-text-gray-dark">
+                        <span>学习中心</span>
+                        <span class="jsk-badge jsk-badge-success jsk-round-rect jsk-padding-vertical-0 sup">code</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="https://www.jisuanke.com/plan" class="jsk-text-gray-dark">学习计划</a>
+                </li>
+                <li class="jsk-dropdown" data-jsk-dropdown="">
+                    <a href="javascript: void(0)" class="jsk-dropdown-toggle jsk-text-gray-dark" data-jsk-dropdown-toggle="">题库 <i class="jsk-icon-caret-down jsk-margin-right-0"></i></a>
+                    <div class="jsk-dropdown-content">
+                        <div class="jsk-dropdown-radius-wrapper">
+                            <ul class="jsk-text-sm">
+                                <li><a href="https://nanti.jisuanke.com/oi">信息学题库</a></li>
+                                <li><a href="https://nanti.jisuanke.com/acm">ACM 题库</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <a href="https://nanti.jisuanke.com/contest" class="jsk-text-gray-dark">比赛</a>
+                </li>
+                            </ul>
+        </div>
+
+
+
+        <div class="jsk-topbar-right jsk-topbar-info jsk-margin-right-0">
+                        <span class="jsk-fr jsk-hide-sm jsk-margin-top-xs">
+                <div class="jsk-dropdown" id="username" data-jsk-dropdown="">
+                    <a class="jsk-dropdown-toggle user-select-disabled" data-jsk-dropdown-toggle="">
+                        <img src="./Rolling The Polygon - 计蒜客_files/0.jpg" alt="" class="jsk-circle" width="40" height="40">
+                        <span class="jsk-padding-left-xs jsk-text-sm jsk-show-lg-only">
+                            team1533 <i class="jsk-icon-caret-down"></i>
+                        </span>
+                    </a>
+                    <div class="jsk-dropdown-content">
+                        <div class="jsk-dropdown-radius-wrapper">
+                            <ul class="jsk-text-sm">
+                                <li><a href="https://i.jisuanke.com/u/w5v5zq8" target="_blank"><i class="jsk-icon-home jsk-icon-fw"></i> 我的主页</a></li>
+                                <li class="jsk-divider"></li>
+                                                                                                                                <li><a href="https://i.jisuanke.com/setting/account/charge" target="_blank"><i class="jsk-icon-credit-card jsk-icon-fw"></i> 我的账户</a></li>
+                                <li><a href="https://i.jisuanke.com/setting/basic" target="_blank"><i class="jsk-icon-gear jsk-icon-fw"></i> 账号设置</a></li>
+                                <li><a href="https://i.jisuanke.com/setting/invite" target="_blank"><i class="jsk-icon-share-alt jsk-icon-fw"></i> 邀请好友</a></li>
+                                <li class="jsk-divider"></li>
+                                <li class="jsk-text-center"><a href="https://passport.jisuanke.com/auth/logout">退出</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <span class="jsk-text-gray-lighter jsk-margin-left-sm">|</span>
+                <div class="jsk-dropdown jsk-padding-left" id="notifications" data-jsk-dropdown="">
+                    <a class="jsk-dropdown-toggle topbar-avatar" data-jsk-dropdown-toggle="" data-href="//i.jisuanke.com/notifications">
+                        <i class="jsk-icon-bell"></i>
+                        <span class="jsk-badge jsk-badge-danger jsk-round jsk-padding-vertical-0 count" style="display: none">0</span>
+                    </a>
+                    <div class="jsk-dropdown-content topbar-notification">
+                        <ul class="notifications-list jsk-list jsk-list-striped jsk-padding-0 jsk-radius jsk-text-sm">
+                            <div class="jsk-padding-top-lg jsk-text-center">消息加载请求中...</div>
+                        </ul>
+                        <div class="empty-placeholder">
+                            <div class="jsk-text-center">您暂时没有新的消息</div>
+                        </div>
+                        <a href="https://i.jisuanke.com/notifications" class="more jsk-text-center jsk-text-sm jsk-radius-bottom">查看全部消息 <i class="jsk-icon-angle-double-right"></i></a>
+                    </div>
+                </div>
+            </span>
+                    </div>
+        <div class="logout-in-guide" style="display: none">
+            <span class="jsk-fr jsk-hide-sm">
+                <a href="https://passport.jisuanke.com/auth/logout">退出登录</a>
+            </span>
+        </div>
+    </div>
+</header>
+    <div class="mask" id="loading-mask" style="display: none;"></div>
+    <div id="app" class="jsk-container jsk-container-sm"><div id="top-panel" class="jsk-panel jsk-margin-top-0 jsk-margin-bottom jsk-mobile-margin-0 jsk-text-sm top-panel"><div class="top-panel-left"><a href="https://www.jisuanke.com/contest/2991" title="返回 The 2019 Asia Yinchuan First Round Online Programming 主页" class="jsk-icon-home top-panel-btn top-panel-icon-btn top-panel-btn-left"></a> <a href="https://www.jisuanke.com/contest/2991/261478" class="jsk-icon-angle-left top-panel-btn top-panel-icon-btn"></a> <div data-jsk-dropdown="{ maxHeight: &#39;60%&#39; }" class="jsk-dropdown"><a class="jsk-active jsk-dropdown-toggle top-panel-btn jsk-padding-left jsk-padding-right-sm jsk-text-truncate">B. Rolling The Polygon<i class="jsk-icon jsk-icon-caret-down jsk-icon-fw"></i></a> <div class="jsk-dropdown-content"><div class="jsk-dropdown-radius-wrapper" style="max-height: 360px;"><ul style="max-height: 360px;"><li><a href="https://www.jisuanke.com/contest/2991/261478">A. Maximum Element In A Stack</a></li> <li class="jsk-active"><a>B. Rolling The Polygon</a></li> <li><a href="https://www.jisuanke.com/contest/2991/261480">C. Caesar Cipher</a></li> <li><a href="https://www.jisuanke.com/contest/2991/261481">D. Take Your Seat</a></li> <li><a href="https://www.jisuanke.com/contest/2991/261482">E. 2-3-4 Tree</a></li> <li><a href="https://www.jisuanke.com/contest/2991/261483">F. Moving On</a></li> <li><a href="https://www.jisuanke.com/contest/2991/261484">G. Factories</a></li> <li><a href="https://www.jisuanke.com/contest/2991/261485">H. Fight Against Monsters</a></li> <li><a href="https://www.jisuanke.com/contest/2991/261486">I. Bubble Sort</a></li> <li><a href="https://www.jisuanke.com/contest/2991/261487">J. Nested Triangles</a></li> <li><a href="https://www.jisuanke.com/contest/2991/261488">K. Vertex Covers</a></li> <li><a href="https://www.jisuanke.com/contest/2991/261489">L. Continuous Intervals</a></li> <li><a href="https://www.jisuanke.com/contest/2991/261490">M. Acyclic Orientation</a></li></ul></div></div></div> <a href="https://www.jisuanke.com/contest/2991/261480" class="jsk-icon-angle-right top-panel-btn top-panel-icon-btn"></a></div> <div class="top-panel-right"><a href="https://wenda.jisuanke.com/contest/2991?tag=Rolling%20The%20Polygon" target="_blank" class="jsk-fr jsk-link-muted jsk-padding-horizontal top-panel-question-btn"><i class="jsk-icon-question-circle"></i>问答
+            </a></div> <div class="jsk-text-center jsk-text-xs jsk-text-gray-light jsk-hide-sm"></div></div> <div tabindex="-1" id="feedback-modal" class="jsk-modal jsk-modal-simple jsk-modal-prompt jsk-modal-out" style="display: none; margin-top: -84px;"><div class="jsk-modal-dialog"><div class="jsk-modal-hd"><h4>问题反馈</h4> <span data-jsk-modal-close="" class="jsk-close">×</span></div> <div class="jsk-modal-bd"><div class="jsk-form"><div id="problem-type" class="jsk-form-group form-group"><label class="jsk-form-label">问题类型</label> <div class="jsk-input-group"><label class="jsk-radio radio"><input type="radio" name="problem-type" value="website_use_problem" checked="checked" data-jsk-ucheck="" class="jsk-ucheck-radio" style="margin-left: 1.5rem;"><span class="jsk-ucheck-icons"><i class="jsk-icon-unchecked"></i><i class="jsk-icon-checked"></i></span>
+                        网站使用问题
+                    </label> <label class="jsk-radio radio"><input type="radio" name="problem-type" value="course_error" data-jsk-ucheck="" class="jsk-ucheck-radio" style="margin-left: 1.5rem;"><span class="jsk-ucheck-icons"><i class="jsk-icon-unchecked"></i><i class="jsk-icon-checked"></i></span>
+                        课程内容 / 题目错误
+                    </label> <label class="jsk-radio radio"><input type="radio" name="problem-type" value="suggestion" data-jsk-ucheck="" class="jsk-ucheck-radio" style="margin-left: 1.5rem;"><span class="jsk-ucheck-icons"><i class="jsk-icon-unchecked"></i><i class="jsk-icon-checked"></i></span>
+                        意见及建议
+                    </label></div></div> <div id="feedback-content" class="jsk-form-group"><label class="jsk-form-label">反馈内容</label> <div class="jsk-margin-top-xs"><textarea placeholder="请填写你遇到的问题或对我们的意见和建议，我们会认真听取和改进。请填写不超过 300 字的内容" maxlength="300" required="required" style="height: 85px;"></textarea></div></div> <div class="jsk-form-group jsk-form-file"><label class="jsk-form-label">图片附件</label> <div class="jsk-margin-top-xs upload-btn"><a class="jsk-btn jsk-btn-default jsk-btn-sm jsk-btn-upload"><i class="jsk-icon-cloud-upload"></i> 选择要上传的文件
+                        <input type="file" id="upload-feedback-image" accept="image/jpg, image/png"></a></div> <p class="jsk-form-help upload-help">仅支持 .jpg/ .png 文件格式，单张图片大小不超过 2M，最多上传 3 张</p> <ul class="jsk-avg-md-1 uploaded-images-list" style="display: none;"></ul></div></div></div> <div class="jsk-modal-footer"><span id="submit-feedback" data-jsk-modal-confirm="" class="jsk-btn jsk-btn-success">提交反馈</span></div></div></div> <div id="container" class="jsk-panel jsk-margin-top-0 container" style="height: 464px;"><div class="jsk-panel-bd jsk-g jsk-padding-0" style="height: 386px;"><div id="guide" class="jsk-u-sm-12 jsk-u-md-4 jsk-u-lg-4" style="overflow-y: auto;"><div class="jsk-padding-top guide-content"><button id="description-fullscreen" class="jsk-btn jsk-btn-xs jsk-btn-primary
+                           jsk-padding-xs jsk-padding-horizontal-sm
+                           jsk-margin-negative-xs jsk-fr fullscreen-btn">只看题面</button> <ul id="problem-data" class="jsk-avg-sm-2 jsk-text-sm"><li><i class="jsk-margin-right-0 jsk-icon-clock-o jsk-icon-fw"></i> <span data-jsk-popover="{content: &#39;时间限制&#39;, trigger: &#39;hover focus&#39;, theme: &#39;sm&#39;}">1000ms</span></li> <li><i class="jsk-margin-right-0 jsk-icon-th jsk-icon-fw"></i> <span data-jsk-popover="{content: &#39;内存限制&#39;, trigger: &#39;hover focus&#39;, theme: &#39;sm&#39;}">262144K</span></li></ul> <div><p class="print-title">Rolling The Polygon</p></div> <div id="description" oncopy="return false" oncut="return false" class="jsk-margin-top"><p>Bahiyyah has a convex polygon with <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>n</mi></mrow><annotation encoding="application/x-tex">n</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">n</span></span></span></span> vertices <span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>P</mi><mn>0</mn></msub><mo separator="true">,</mo><msub><mi>P</mi><mn>1</mn></msub><mo separator="true">,</mo><mo>⋯</mo><mtext> </mtext><mo separator="true">,</mo><msub><mi>P</mi><mrow><mi>n</mi><mo>−</mo><mn>1</mn></mrow></msub></mrow><annotation encoding="application/x-tex">P_0, P_1, \cdots , P_{n-1}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.891661em;vertical-align:-0.208331em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.13889em;">P</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.30110799999999993em;"><span style="top:-2.5500000000000003em;margin-left:-0.13889em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">0</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.13889em;">P</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.30110799999999993em;"><span style="top:-2.5500000000000003em;margin-left:-0.13889em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">1</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="minner">⋯</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.13889em;">P</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.301108em;"><span style="top:-2.5500000000000003em;margin-left:-0.13889em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight">n</span><span class="mbin mtight">−</span><span class="mord mtight">1</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.208331em;"><span></span></span></span></span></span></span></span></span></span> in the counterclockwise order. Two vertices with consecutive indexes are adjacent, and besides, <span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>P</mi><mn>0</mn></msub></mrow><annotation encoding="application/x-tex">P_0</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.83333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.13889em;">P</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.30110799999999993em;"><span style="top:-2.5500000000000003em;margin-left:-0.13889em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">0</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span> and <span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>P</mi><mrow><mi>n</mi><mo>−</mo><mn>1</mn></mrow></msub></mrow><annotation encoding="application/x-tex">P_{n-1}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.891661em;vertical-align:-0.208331em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.13889em;">P</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.301108em;"><span style="top:-2.5500000000000003em;margin-left:-0.13889em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight">n</span><span class="mbin mtight">−</span><span class="mord mtight">1</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.208331em;"><span></span></span></span></span></span></span></span></span></span> are adjacent. She also assigns a point Q inside the polygon which may appear on the border.</p><p>Now, Bahiyyah decides to roll the polygon along a straight line and calculate the length of the trajectory (or track) of point <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>Q</mi></mrow><annotation encoding="application/x-tex">Q</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8777699999999999em;vertical-align:-0.19444em;"></span><span class="mord mathdefault">Q</span></span></span></span>.</p><p>To help clarify, we suppose <span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>P</mi><mi>n</mi></msub><mo>=</mo><msub><mi>P</mi><mn>0</mn></msub><mo separator="true">,</mo><msub><mi>P</mi><mrow><mi>n</mi><mo>+</mo><mn>1</mn></mrow></msub><mo>=</mo><msub><mi>P</mi><mn>1</mn></msub></mrow><annotation encoding="application/x-tex">P_n = P_0, P_{n+1} = P_1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.83333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.13889em;">P</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.151392em;"><span style="top:-2.5500000000000003em;margin-left:-0.13889em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">n</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.891661em;vertical-align:-0.208331em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.13889em;">P</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.30110799999999993em;"><span style="top:-2.5500000000000003em;margin-left:-0.13889em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">0</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.13889em;">P</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.301108em;"><span style="top:-2.5500000000000003em;margin-left:-0.13889em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight">n</span><span class="mbin mtight">+</span><span class="mord mtight">1</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.208331em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.83333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.13889em;">P</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.30110799999999993em;"><span style="top:-2.5500000000000003em;margin-left:-0.13889em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">1</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span> and assume the edge between <span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>P</mi><mn>0</mn></msub></mrow><annotation encoding="application/x-tex">P_0</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.83333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.13889em;">P</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.30110799999999993em;"><span style="top:-2.5500000000000003em;margin-left:-0.13889em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">0</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span> and <span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>P</mi><mn>1</mn></msub></mrow><annotation encoding="application/x-tex">P_1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.83333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.13889em;">P</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.30110799999999993em;"><span style="top:-2.5500000000000003em;margin-left:-0.13889em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">1</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span> is lying on the line at first. At that point when the edge between <span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>P</mi><mrow><mi>i</mi><mo>−</mo><mn>1</mn></mrow></msub></mrow><annotation encoding="application/x-tex">P_{i-1}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.891661em;vertical-align:-0.208331em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.13889em;">P</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.311664em;"><span style="top:-2.5500000000000003em;margin-left:-0.13889em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight">i</span><span class="mbin mtight">−</span><span class="mord mtight">1</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.208331em;"><span></span></span></span></span></span></span></span></span></span> and <span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>P</mi><mi>i</mi></msub></mrow><annotation encoding="application/x-tex">P_i</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.83333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.13889em;">P</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.31166399999999994em;"><span style="top:-2.5500000000000003em;margin-left:-0.13889em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span> lies on the line, Bahiyyah rolls the polygon forward rotating the polygon along the vertex <span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>P</mi><mi>i</mi></msub></mrow><annotation encoding="application/x-tex">P_i</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.83333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.13889em;">P</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.31166399999999994em;"><span style="top:-2.5500000000000003em;margin-left:-0.13889em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span> until the next edge (which is between <span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>P</mi><mi>i</mi></msub></mrow><annotation encoding="application/x-tex">P_i</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.83333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.13889em;">P</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.31166399999999994em;"><span style="top:-2.5500000000000003em;margin-left:-0.13889em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span> and <span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>P</mi><mrow><mi>i</mi><mo>+</mo><mn>1</mn></mrow></msub></mrow><annotation encoding="application/x-tex">P_{i+1}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.891661em;vertical-align:-0.208331em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.13889em;">P</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.311664em;"><span style="top:-2.5500000000000003em;margin-left:-0.13889em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight">i</span><span class="mbin mtight">+</span><span class="mord mtight">1</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.208331em;"><span></span></span></span></span></span></span></span></span></span>) meets the line. She will stop the rolling when the edge between <span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>P</mi><mi>n</mi></msub></mrow><annotation encoding="application/x-tex">P_n</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.83333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.13889em;">P</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.151392em;"><span style="top:-2.5500000000000003em;margin-left:-0.13889em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">n</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span> and <span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>P</mi><mrow><mi>n</mi><mo>+</mo><mn>1</mn></mrow></msub></mrow><annotation encoding="application/x-tex">P_{n+1}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.891661em;vertical-align:-0.208331em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.13889em;">P</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.301108em;"><span style="top:-2.5500000000000003em;margin-left:-0.13889em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight">n</span><span class="mbin mtight">+</span><span class="mord mtight">1</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.208331em;"><span></span></span></span></span></span></span></span></span></span> (which is same as the edge between <span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>P</mi><mn>0</mn></msub></mrow><annotation encoding="application/x-tex">P_0</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.83333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.13889em;">P</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.30110799999999993em;"><span style="top:-2.5500000000000003em;margin-left:-0.13889em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">0</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span> and <span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>P</mi><mn>1</mn></msub></mrow><annotation encoding="application/x-tex">P_1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.83333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.13889em;">P</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.30110799999999993em;"><span style="top:-2.5500000000000003em;margin-left:-0.13889em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">1</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span>) meets the line again.</p><h3>Input</h3><p>The input contains several test cases, and the first line is a positive integer <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>T</mi></mrow><annotation encoding="application/x-tex">T</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.13889em;">T</span></span></span></span> indicating the number of test cases which is up to <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>50</mn></mrow><annotation encoding="application/x-tex">50</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">5</span><span class="mord">0</span></span></span></span>.</p><p>For each test case, the first line contains an integer <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>n</mi><mo>(</mo><mn>3</mn><mo>≤</mo><mi>n</mi><mo>≤</mo><mn>50</mn><mo>)</mo></mrow><annotation encoding="application/x-tex">n (3 \le n \le 50)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault">n</span><span class="mopen">(</span><span class="mord">3</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">≤</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.7719400000000001em;vertical-align:-0.13597em;"></span><span class="mord mathdefault">n</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">≤</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">5</span><span class="mord">0</span><span class="mclose">)</span></span></span></span> indicating the number of vertices of the given convex polygon. Following <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>n</mi></mrow><annotation encoding="application/x-tex">n</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">n</span></span></span></span> lines describe vertices of the polygon in the counterclockwise order. The i-th line of them contains two integers <span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>x</mi><mrow><mi>i</mi><mo>−</mo><mn>1</mn></mrow></msub></mrow><annotation encoding="application/x-tex">x_{i-1}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.638891em;vertical-align:-0.208331em;"></span><span class="mord"><span class="mord mathdefault">x</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.311664em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight">i</span><span class="mbin mtight">−</span><span class="mord mtight">1</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.208331em;"><span></span></span></span></span></span></span></span></span></span> and <span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>y</mi><mrow><mi>i</mi><mo>−</mo><mn>1</mn></mrow></msub></mrow><annotation encoding="application/x-tex">y_{i-1}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.638891em;vertical-align:-0.208331em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.03588em;">y</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.311664em;"><span style="top:-2.5500000000000003em;margin-left:-0.03588em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight">i</span><span class="mbin mtight">−</span><span class="mord mtight">1</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.208331em;"><span></span></span></span></span></span></span></span></span></span>, which are the coordinates of point <span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>P</mi><mrow><mi>i</mi><mo>−</mo><mn>1</mn></mrow></msub></mrow><annotation encoding="application/x-tex">P_{i-1}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.891661em;vertical-align:-0.208331em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.13889em;">P</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.311664em;"><span style="top:-2.5500000000000003em;margin-left:-0.13889em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight">i</span><span class="mbin mtight">−</span><span class="mord mtight">1</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.208331em;"><span></span></span></span></span></span></span></span></span></span>. The last line contains two integers <span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>x</mi><mi>Q</mi></msub></mrow><annotation encoding="application/x-tex">x_Q</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.716668em;vertical-align:-0.286108em;"></span><span class="mord"><span class="mord mathdefault">x</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.328331em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">Q</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.286108em;"><span></span></span></span></span></span></span></span></span></span> and <span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>y</mi><mi>Q</mi></msub></mrow><annotation encoding="application/x-tex">y_Q</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.716668em;vertical-align:-0.286108em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.03588em;">y</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.328331em;"><span style="top:-2.5500000000000003em;margin-left:-0.03588em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">Q</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.286108em;"><span></span></span></span></span></span></span></span></span></span>, which are the coordinates of point <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>Q</mi></mrow><annotation encoding="application/x-tex">Q</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8777699999999999em;vertical-align:-0.19444em;"></span><span class="mord mathdefault">Q</span></span></span></span>.</p><p>We guarantee that all coordinates are in the range of <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>−</mo><mn>1</mn><msup><mn>0</mn><mn>3</mn></msup></mrow><annotation encoding="application/x-tex">-10^3</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.897438em;vertical-align:-0.08333em;"></span><span class="mord">−</span><span class="mord">1</span><span class="mord"><span class="mord">0</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141079999999999em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">3</span></span></span></span></span></span></span></span></span></span></span> to <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>1</mn><msup><mn>0</mn><mn>3</mn></msup></mrow><annotation encoding="application/x-tex">10^3</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8141079999999999em;vertical-align:0em;"></span><span class="mord">1</span><span class="mord"><span class="mord">0</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141079999999999em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">3</span></span></span></span></span></span></span></span></span></span></span>, and point <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>Q</mi></mrow><annotation encoding="application/x-tex">Q</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8777699999999999em;vertical-align:-0.19444em;"></span><span class="mord mathdefault">Q</span></span></span></span> is located inside the polygon or lies on its border.</p><h3>Output</h3><p>For each test case, output a line containing <strong>Case #x: y</strong>, where <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>x</mi></mrow><annotation encoding="application/x-tex">x</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">x</span></span></span></span> is the test case number starting from <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>1</mn></mrow><annotation encoding="application/x-tex">1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">1</span></span></span></span>, and <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>y</mi></mrow><annotation encoding="application/x-tex">y</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.19444em;"></span><span class="mord mathdefault" style="margin-right:0.03588em;">y</span></span></span></span> is the length of the trajectory of the point <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>Q</mi></mrow><annotation encoding="application/x-tex">Q</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8777699999999999em;vertical-align:-0.19444em;"></span><span class="mord mathdefault">Q</span></span></span></span> rounded to <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>3</mn></mrow><annotation encoding="application/x-tex">3</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">3</span></span></span></span> places. We guarantee that <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>4</mn></mrow><annotation encoding="application/x-tex">4</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">4</span></span></span></span>-th place after the decimal point in the precise answer would not be <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>4</mn></mrow><annotation encoding="application/x-tex">4</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">4</span></span></span></span> or <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>5</mn></mrow><annotation encoding="application/x-tex">5</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">5</span></span></span></span>.</p><p class="jsk-radius jsk-text-sm jsk-text-success jsk-margin-bottom-xs"><i class="jsk-icon-info-circle"></i>输出时每行末尾的多余空格，不影响答案正确性</p></div> <div id="samples"><div class="jsk-margin-vertical-sm"><h4 class="title jsk-margin-bottom-xs">样例输入                        <button data-jsk-popover="{content: &#39;复制成功&#39;, theme: &#39;success sm&#39;}" class="jsk-btn-link jsk-fr jsk-text-sm" data-clipboard-target="#id0065202033082028880002" id="id0097685425837733790001">复制</button></h4> <pre class="jsk-text-danger jsk-text-default jsk-padding-vertical-xs jsk-margin-top-0 jsk-margin-bottom-lg" id="id0065202033082028880002">4
+4
+0 0
+2 0
+2 2
+0 2
+1 1
+3
+0 0
+2 1
+1 2
+1 1
+5
+0 0
+1 0
+2 2
+1 3
+-1 2
+0 0
+6
+0 0
+3 0
+4 1
+2 2
+1 2
+-1 1
+1 0</pre></div> <div class="jsk-margin-vertical-sm"><h4 class="title jsk-margin-bottom-xs">样例输出                        <button data-jsk-popover="{content: &#39;复制成功&#39;, theme: &#39;success sm&#39;}" class="jsk-btn-link jsk-fr jsk-text-sm" data-clipboard-target="#id00147843883007369170004" id="id0088288709474203220003">复制</button></h4> <pre class="jsk-text-danger jsk-text-default jsk-padding-vertical-xs jsk-margin-top-0 jsk-margin-bottom-lg" id="id00147843883007369170004">Case #1: 8.886
+Case #2: 7.318
+Case #3: 12.102
+Case #4: 14.537</pre></div> <div class="jsk-margin-vertical-sm"><h4 class="title jsk-margin-bottom-xs">样例解释</h4> <div id="sample_explain1"><p>The following figure is the the trajectory of the point <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>Q</mi></mrow><annotation encoding="application/x-tex">Q</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8777699999999999em;vertical-align:-0.19444em;"></span><span class="mord mathdefault">Q</span></span></span></span> in the first sample test case.</p><p><img src="./Rolling The Polygon - 计蒜客_files/9d047232957ecf36450e9c06240a15f0118ffd2f.png" alt=""></p></div></div></div></div></div> <div id="editor" class="jsk-u-sm-12 jsk-u-md-8 jsk-u-lg-8 jsk-padding-horizontal-0"><div data-jsk-tabs="{noSwipe: 1}" class="jsk-tabs"><ul class="jsk-tabs-nav jsk-nav jsk-nav-tabs"><li class=" jsk-active tab-file"><a class="file jsk-padding-vertical-sm">
+                            main.cpp                        </a></li> <span class="jsk-nav-tabs-option jsk-fr"><span id="save-code" title="保存代码 [Ctrl+S]" class="jsk-padding-right-xs"><i class="jsk-icon-save"></i></span> <span id="full-screen" data-fullscreen="0" title="非全屏/全屏"><i class="jsk-icon-expand"></i></span> <span class="jsk-padding-right-xs"><div id="setting-dropdown" class="jsk-dropdown"><span id="setting" title="编辑器设置" class="jsk-dropdown-toggle config"><i class="jsk-icon-gear"></i></span> <div id="setting-menu" class="jsk-dropdown-content jsk-padding-sm"><div class="jsk-form-group"><label class="setting-title">编辑器模式</label> <label class="jsk-radio-inline"><input type="radio" value="sublime" name="mode" data-jsk-ucheck="" class="jsk-ucheck-radio"><span class="jsk-ucheck-icons"><i class="jsk-icon-unchecked"></i><i class="jsk-icon-checked"></i></span><span class="text-gray"> Sublime</span></label> <label class="jsk-radio-inline"><input type="radio" value="vim" name="mode" data-jsk-ucheck="" class="jsk-ucheck-radio"><span class="jsk-ucheck-icons"><i class="jsk-icon-unchecked"></i><i class="jsk-icon-checked"></i></span><span class="text-gray"> Vim</span></label> <label class="jsk-radio-inline"><input type="radio" value="emacs" name="mode" data-jsk-ucheck="" class="jsk-ucheck-radio"><span class="jsk-ucheck-icons"><i class="jsk-icon-unchecked"></i><i class="jsk-icon-checked"></i></span><span class="text-gray"> Emacs</span></label></div> <div class="jsk-form-group jsk-margin-top-sm"><label class="setting-title">环境配色</label> <select id="theme-select" style="display: none;"><option value="theme-light" selected="selected" class="theme">亮色配色</option> <option value="theme-dark" class="theme">暗色配色</option></select><div class="jsk-selected jsk-dropdown " id="jsk-selected-jzkwt" data-jsk-dropdown="" style="width: 150px;">  <button type="button" class="jsk-selected-btn jsk-btn jsk-dropdown-toggle jsk-btn-sm jsk-btn-default">    <span class="jsk-selected-status jsk-fl">暗色配色</span>    <i class="jsk-selected-icon jsk-icon-caret-down"></i>  </button>  <div class="jsk-selected-content jsk-dropdown-content">    <h2 class="jsk-selected-header"><span class="jsk-icon-chevron-left">返回</span></h2>       <ul class="jsk-selected-list">                     <li class="" data-index="0" data-group="0" data-value="theme-light">         <span class="jsk-selected-text">亮色配色</span>         <i class="jsk-icon-check"></i></li>                                 <li class="jsk-checked" data-index="1" data-group="0" data-value="theme-dark">         <span class="jsk-selected-text">暗色配色</span>         <i class="jsk-icon-check"></i></li>            </ul>    <div class="jsk-selected-hint"></div>  </div></div></div> <div class="jsk-form-group jsk-margin-top-sm jsk-margin-bottom-0"><label class="setting-title">代码缩进</label> <select id="tabsize-select" style="display: none;"><option value="tabsize-2" class="tabsize">2</option> <option value="tabsize-4" selected="selected" class="tabsize">4</option> <option value="tabsize-8" class="tabsize">8</option></select><div class="jsk-selected jsk-dropdown " id="jsk-selected-c3v3n" data-jsk-dropdown="" style="width: 150px;">  <button type="button" class="jsk-selected-btn jsk-btn jsk-dropdown-toggle jsk-btn-sm jsk-btn-default">    <span class="jsk-selected-status jsk-fl">4</span>    <i class="jsk-selected-icon jsk-icon-caret-down"></i>  </button>  <div class="jsk-selected-content jsk-dropdown-content">    <h2 class="jsk-selected-header"><span class="jsk-icon-chevron-left">返回</span></h2>       <ul class="jsk-selected-list">                     <li class="" data-index="0" data-group="0" data-value="tabsize-2">         <span class="jsk-selected-text">2</span>         <i class="jsk-icon-check"></i></li>                                 <li class="jsk-checked" data-index="1" data-group="0" data-value="tabsize-4">         <span class="jsk-selected-text">4</span>         <i class="jsk-icon-check"></i></li>                                 <li class="" data-index="2" data-group="0" data-value="tabsize-8">         <span class="jsk-selected-text">8</span>         <i class="jsk-icon-check"></i></li>            </ul>    <div class="jsk-selected-hint"></div>  </div></div></div></div></div></span></span> <div class="lang-selector jsk-fr jsk-padding-right"><select id="lang" style="display: none;"><option value="c++" file="main.cpp" mime="text/x-c++src">
+                                C++ 语言 (C++11)                            </option> <option selected="selected" value="c++14" file="main.cpp" mime="text/x-c++src">
+                                C++ 语言 (C++14)                            </option> <option value="c" file="main.c" mime="text/x-csrc">
+                                C 语言                            </option> <option value="java" file="Main.java" mime="text/x-java">
+                                Java 语言                            </option> <option value="python" file="main.py" mime="text/x-python">
+                                Python 语言 (2.7)                            </option> <option value="python3" file="main.py" mime="text/x-python">
+                                Python 语言 (3.5)                            </option></select><div class="jsk-selected jsk-dropdown " id="jsk-selected-5bo2e" data-jsk-dropdown="" style="width: 130px;">  <button type="button" class="jsk-selected-btn jsk-btn jsk-dropdown-toggle jsk-btn-xs jsk-btn-secondary">    <span class="jsk-selected-status jsk-fl">C++ 语言 (C++14)</span>    <i class="jsk-selected-icon jsk-icon-caret-down"></i>  </button>  <div class="jsk-selected-content jsk-dropdown-content">    <h2 class="jsk-selected-header"><span class="jsk-icon-chevron-left">返回</span></h2>       <ul class="jsk-selected-list" style="max-height: 240px; overflow-y: scroll;">                     <li class="" data-index="0" data-group="0" data-value="c++">         <span class="jsk-selected-text">C++ 语言 (C++11)</span>         <i class="jsk-icon-check"></i></li>                                 <li class="jsk-checked" data-index="1" data-group="0" data-value="c++14">         <span class="jsk-selected-text">C++ 语言 (C++14)</span>         <i class="jsk-icon-check"></i></li>                                 <li class="" data-index="2" data-group="0" data-value="c">         <span class="jsk-selected-text">C 语言</span>         <i class="jsk-icon-check"></i></li>                                 <li class="" data-index="3" data-group="0" data-value="java">         <span class="jsk-selected-text">Java 语言</span>         <i class="jsk-icon-check"></i></li>                                 <li class="" data-index="4" data-group="0" data-value="python">         <span class="jsk-selected-text">Python 语言 (2.7)</span>         <i class="jsk-icon-check"></i></li>                                 <li class="" data-index="5" data-group="0" data-value="python3">         <span class="jsk-selected-text">Python 语言 (3.5)</span>         <i class="jsk-icon-check"></i></li>            </ul>    <div class="jsk-selected-hint"></div>  </div></div></div></ul> <div id="jsk-blockly" style="height: 354px; width: 100%; display: none;"><div class="injectionDiv" dir="LTR"><div class="blocklyToolboxDiv" dir="LTR" style="left: 0px; height: 0px;"><div class="blocklyTreeRoot" id=":0" role="tree" aria-selected="false" aria-level="0" aria-labelledby=":0.label" aria-expanded="false" hidefocus="true" tabindex="0"><div class="blocklyTreeRow blocklyHidden" style="padding-left:0px;"><span style="display:inline-block;" class="" role="presentation"></span><span class="blocklyTreeLabel" id=":0.label"></span><span></span></div><div style="background-position:-100px 0;" role="group"><div class="" id=":1" role="treeitem" aria-selected="false" aria-level="1" aria-labelledby=":1.label" aria-setsize="10" aria-posinset="1"><div class="blocklyTreeRow" style="padding-left: 0px; border-left: 8px solid rgb(165, 128, 91);"><span role="presentation"></span><span style="display:inline-block;" class="blocklyTreeIcon blocklyTreeIconNone" role="presentation"></span><span class="blocklyTreeLabel" id=":1.label">通用</span><span></span></div><div style="background-position:0px 0;display:none;" role="group"></div></div><div class="" id=":2" role="treeitem" aria-selected="false" aria-level="1" aria-labelledby=":2.label" aria-setsize="10" aria-posinset="2"><div class="blocklyTreeRow" style="padding-left: 0px; border-left: 8px solid rgb(91, 128, 165);"><span role="presentation"></span><span style="display:inline-block;" class="blocklyTreeIcon blocklyTreeIconNone" role="presentation"></span><span class="blocklyTreeLabel" id=":2.label">逻辑</span><span></span></div><div style="background-position:0px 0;display:none;" role="group"></div></div><div class="" id=":3" role="treeitem" aria-selected="false" aria-level="1" aria-labelledby=":3.label" aria-setsize="10" aria-posinset="3"><div class="blocklyTreeRow" style="padding-left: 0px; border-left: 8px solid rgb(91, 165, 91);"><span role="presentation"></span><span style="display:inline-block;" class="blocklyTreeIcon blocklyTreeIconNone" role="presentation"></span><span class="blocklyTreeLabel" id=":3.label">循环</span><span></span></div><div style="background-position:0px 0;display:none;" role="group"></div></div><div class="" id=":4" role="treeitem" aria-selected="false" aria-level="1" aria-labelledby=":4.label" aria-setsize="10" aria-posinset="4"><div class="blocklyTreeRow" style="padding-left: 0px; border-left: 8px solid rgb(91, 103, 165);"><span role="presentation"></span><span style="display:inline-block;" class="blocklyTreeIcon blocklyTreeIconNone" role="presentation"></span><span class="blocklyTreeLabel" id=":4.label">数学</span><span></span></div><div style="background-position:0px 0;display:none;" role="group"></div></div><div class="" id=":5" role="treeitem" aria-selected="false" aria-level="1" aria-labelledby=":5.label" aria-setsize="10" aria-posinset="5"><div class="blocklyTreeRow" style="padding-left: 0px; border-left: 8px solid rgb(91, 165, 140);"><span role="presentation"></span><span style="display:inline-block;" class="blocklyTreeIcon blocklyTreeIconNone" role="presentation"></span><span class="blocklyTreeLabel" id=":5.label">文本</span><span></span></div><div style="background-position:0px 0;display:none;" role="group"></div></div><div class="" id=":6" role="treeitem" aria-selected="false" aria-level="1" aria-labelledby=":6.label" aria-setsize="10" aria-posinset="6"><div class="blocklyTreeRow" style="padding-left: 0px; border-left: 8px solid rgb(116, 91, 165);"><span role="presentation"></span><span style="display:inline-block;" class="blocklyTreeIcon blocklyTreeIconNone" role="presentation"></span><span class="blocklyTreeLabel" id=":6.label">列表</span><span></span></div><div style="background-position:0px 0;display:none;" role="group"></div></div><div class="" id=":7" role="treeitem" aria-selected="false" aria-level="1" aria-labelledby=":7.label" aria-setsize="10" aria-posinset="7"><div class="blocklyTreeRow" style="padding-left: 0px; border-left: 8px solid rgb(165, 116, 91);"><span role="presentation"></span><span style="display:inline-block;" class="blocklyTreeIcon blocklyTreeIconNone" role="presentation"></span><span class="blocklyTreeLabel" id=":7.label">颜色</span><span></span></div><div style="background-position:0px 0;display:none;" role="group"></div></div><div id=":8" role="treeitem" aria-selected="false" aria-level="1" aria-labelledby=":8.label" aria-setsize="10" aria-posinset="8"><div class="blocklyTreeSeparator" style="border-left: 8px solid rgb(221, 221, 221);"><span role="presentation"></span><span style="display:inline-block;" class="" role="presentation"></span><span id=":8.label"></span><span></span></div><div style="background-position:NaNpx 0;display:none;" role="group"></div></div><div class="" id=":9" role="treeitem" aria-selected="false" aria-level="1" aria-labelledby=":9.label" aria-setsize="10" aria-posinset="9"><div class="blocklyTreeRow" style="padding-left: 0px; border-left: 8px solid rgb(165, 91, 128);"><span role="presentation"></span><span style="display:inline-block;" class="blocklyTreeIcon blocklyTreeIconNone" role="presentation"></span><span class="blocklyTreeLabel" id=":9.label">变量</span><span></span></div><div style="background-position:0px 0;display:none;" role="group"></div></div><div class="" id=":a" role="treeitem" aria-selected="false" aria-level="1" aria-labelledby=":a.label" aria-setsize="10" aria-posinset="10"><div class="blocklyTreeRow" style="padding-left: 0px; border-left: 8px solid rgb(153, 91, 165);"><span role="presentation"></span><span style="display:inline-block;" class="blocklyTreeIcon blocklyTreeIconNone" role="presentation"></span><span class="blocklyTreeLabel" id=":a.label">函数</span><span></span></div><div style="background-position:-100px 0;display:none;" role="group"></div></div></div></div></div><svg xmlns="http://www.w3.org/2000/svg" xmlns:html="http://www.w3.org/1999/xhtml" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" class="blocklySvg" width="0px" height="0px"><defs><filter id="blocklyEmbossFilter08233389068085639"><fegaussianblur in="SourceAlpha" stdDeviation="1" result="blur"></fegaussianblur><fespecularlighting in="blur" surfaceScale="1" specularConstant="0.5" specularExponent="10" lighting-color="white" result="specOut"><fepointlight x="-5000" y="-10000" z="20000"></fepointlight></fespecularlighting><fecomposite in="specOut" in2="SourceAlpha" operator="in" result="specOut"></fecomposite><fecomposite in="SourceGraphic" in2="specOut" operator="arithmetic" k1="0" k2="1" k3="1" k4="0"></fecomposite></filter><pattern id="blocklyDisabledPattern08233389068085639" patternUnits="userSpaceOnUse" width="10" height="10"><rect width="10" height="10" fill="#aaa"></rect><path d="M 0 0 L 10 10 M 10 0 L 0 10" stroke="#cc0"></path></pattern><pattern id="blocklyGridPattern08233389068085639" patternUnits="userSpaceOnUse" width="100" height="100" x="0" y="0"></pattern></defs><g class="blocklyWorkspace"><rect height="100%" width="100%" class="blocklyMainBackground" style="fill: url(&quot;#blocklyGridPattern08233389068085639&quot;);"></rect><g class="blocklyTrash" transform="translate(-82,-95)" style="opacity: 0.4;"><clippath id="blocklyTrashBodyClipPath17881256931623546"><rect width="47" height="44" y="16"></rect></clippath><image width="96" x="0" height="124" y="-32" clip-path="url(#blocklyTrashBodyClipPath17881256931623546)" xlink:href="//res.jisuanke.com/img/blockly/sprites.png"></image><clippath id="blocklyTrashLidClipPath17881256931623546"><rect width="47" height="16"></rect></clippath><image width="96" x="0" height="124" y="-32" clip-path="url(#blocklyTrashLidClipPath17881256931623546)" xlink:href="//res.jisuanke.com/img/blockly/sprites.png" transform="rotate(0,43,14)"></image></g><g class="blocklyBlockCanvas" transform="translate(0,0) scale(1)"></g><g class="blocklyBubbleCanvas" transform="translate(0,0) scale(1)"></g><rect height="15" width="15" class="blocklyScrollbarBackground" x="-15.5" y="-15.5"></rect></g></svg><svg class="blocklyScrollbarVertical blocklyMainWorkspaceScrollbar" width="15" height="0" style="transform: translate(-15.5px, 0.5px);"><g><rect class="blocklyScrollbarBackground" width="15" height="0"></rect><rect class="blocklyScrollbarHandle" rx="5" ry="5" width="10" x="2.5" height="0" y="0"></rect></g></svg><svg class="blocklyScrollbarHorizontal blocklyMainWorkspaceScrollbar" height="15" width="0" style="transform: translate(0.5px, -15.5px);"><g><rect class="blocklyScrollbarBackground" height="15" width="0"></rect><rect class="blocklyScrollbarHandle" rx="5" ry="5" height="10" y="2.5" width="0" x="0"></rect></g></svg><svg class="blocklyFlyout" style="display: none"><path class="blocklyFlyoutBackground"></path><g class="blocklyWorkspace"><g class="blocklyBlockCanvas"></g><g class="blocklyBubbleCanvas"></g></g></svg><svg class="blocklyScrollbarVertical blocklyFlyoutScrollbar" width="15"><g><rect class="blocklyScrollbarBackground" width="15"></rect><rect class="blocklyScrollbarHandle" rx="5" ry="5" width="10" x="2.5"></rect></g></svg><svg xmlns="http://www.w3.org/2000/svg" xmlns:html="http://www.w3.org/1999/xhtml" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" class="blocklyBlockDragSurface"><g transform="translate(0,0) scale(1)"></g></svg><svg xmlns="http://www.w3.org/2000/svg" xmlns:html="http://www.w3.org/1999/xhtml" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" class="blocklyWsDragSurface blocklyOverflowVisible"></svg></div></div> <div class="jsk-tabs-bd"><div class="jsk-tab-panel jsk-active jsk-in jsk-padding-0"><textarea id="codearea" name="codearea" style="display: none;"></textarea><div class="CodeMirror cm-s-jsk-monokai CodeMirror-simplescroll" style="width: 100%; height: 354px;"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 3.99039px; left: 43.9991px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;" tabindex="0"></textarea></div><div class="CodeMirror-simplescroll-horizontal" cm-not-content="true" style="display: none;"><div></div></div><div class="CodeMirror-simplescroll-vertical" cm-not-content="true" style="display: none;"><div></div></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true" style="background-color: rgb(238, 238, 238);"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 40px; margin-bottom: -15px; border-right-width: 15px; min-height: 33px; min-width: 6.99911px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre><div class="CodeMirror-linenumber CodeMirror-gutter-elt"><div>1</div></div></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-cursors" style="visibility: hidden;"><div class="CodeMirror-cursor" style="left: 3.99911px; top: 0px; height: 25.1748px;">&nbsp;</div></div><div class="CodeMirror-code" role="presentation"><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" style="left: -39.9912px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 21px;">1</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="">​</span></span></pre></div></div></div></div></div></div><div style="position: absolute; height: 15px; width: 1px; border-bottom: 0px solid transparent; top: 33px;"></div><div class="CodeMirror-gutters" style="height: 48px; left: -0.991272px;"><div class="CodeMirror-gutter CodeMirror-linenumbers" style="width: 29px;"></div><div class="CodeMirror-gutter CodeMirror-foldgutter"></div></div></div></div></div></div></div> <div id="terminal" style="display: none;"><div class="jsk-panel jsk-panel-default jsk-margin-top-0"><div class="jsk-panel-hd"><a class="close jsk-fr jsk-text-xs"><i class="jsk-icon-times"></i>关闭终端
+            </a> <span>终端 - 计蒜客</span></div> <div class="jsk-panel-bd jsk-padding-left-0 jsk-padding-right-0 jsk-padding-bottom-0"><div id="jsk-console" class="jsk-console"></div></div></div></div></div></div> <div id="panel-footer" class="jsk-panel-footer jsk-cf panel-footer"><div id="panel-footer-fullscreen" class="jsk-text-center" style="display: none;"><button type="button" class="jsk-btn jsk-btn-default">只看题面</button></div> <div id="panel-footer-normal"><div class="jsk-u-md-6 jsk-text-left jsk-padding-left-0 info"><span id="status-msg" class="jsk-text-md jsk-fl jsk-cf jsk-dropdown jsk-dropdown-up"></span></div> <div class="jsk-u-md-6 jsk-fr jsk-text-right jsk-padding-right-0"><audio id="progress-audio" src="//res.jisuanke.com/audio/next.mp3" preload="auto"></audio> <audio id="complete-audio" src="//res.jisuanke.com/audio/success.mp3" preload="auto"></audio> <audio id="fail-audio" src="//res.jisuanke.com/audio/fail.mp3" preload="auto"></audio> <div class="jsk-btn-group"><a id="repeat-btn" class="jsk-btn jsk-btn-default jsk-btn-repeat">重做</a> <a id="submit-history-trigger" class="jsk-btn jsk-btn-default jsk-margin-right">历史</a></div> <div class="jsk-btn-group"><a id="test" data-jsk-modal="{target: &#39;#test-modal&#39;}" class="jsk-btn jsk-btn-success">测试</a> <a id="run" class="jsk-btn jsk-btn-success">提交</a></div></div></div> <div id="test-modal" class="jsk-popup jsk-popup-simple"><div class="jsk-popup-inner"><div class="jsk-popup-hd"><h5 class="jsk-popup-title">在这输入你的测试数据</h5> <span data-jsk-modal-close="" class="jsk-close">×</span></div> <div class="jsk-popup-bd jsk-form"><div class="jsk-form-group"><textarea rows="10" id="test-input" class="jsk-form-field" style="resize: none;"></textarea></div> <div class="jsk-text-right"><a id="test-import" data-case="0" class="jsk-btn jsk-btn-primary">填入样例输入</a> <a id="test-run" class="jsk-btn jsk-btn-success">运行</a></div></div></div></div> <div tabindex="-1" class="jsk-modal jsk-modal-simple jsk-modal-confirm"><div class="jsk-modal-dialog"><div class="jsk-modal-hd"><h4>重做</h4> <span data-jsk-modal-close="" class="jsk-close">×</span></div> <div class="jsk-modal-bd">重做后，你当前的代码将会被清空并无法找回，确认重做？</div> <div class="jsk-modal-footer"><div class="jsk-fr"><div class="jsk-fr"><span data-jsk-modal-cancel="" data-jsk-modal-close="" class="jsk-btn jsk-btn-sm jsk-btn-default">取消</span> <span data-jsk-modal-confirm="" data-jsk-modal-close="" id="repeat" class="jsk-btn jsk-btn-sm jsk-btn-success">确认</span></div></div></div></div></div></div> <div id="finish-footer" class="jsk-panel-footer jsk-background-success-fade panel-footer-replacement"><div class="jsk-u-md-6 jsk-hide-sm jsk-text-success jsk-padding-left-0"><i class="jsk-icon-check jsk-default jsk-text-xl jsk-fl check"></i> <span class="jsk-text-md jsk-fl success">恭喜你通过了这道题！</span></div> <div class="jsk-u-md-6 jsk-text-right jsk-padding-right-0"><a data-redo="" class="jsk-btn jsk-link-muted">再次尝试</a> <a href="https://www.jisuanke.com/contest/2991?view=challenges" class="jsk-btn jsk-btn-success">返回题目列表</a></div></div></div> <div tabindex="-1" id="confirm-modal" class="jsk-modal jsk-modal-simple jsk-modal-prompt jsk-modal-out" style="display: none; margin-top: -84px;"><div class="jsk-modal-dialog"><div id="confirm-title" class="jsk-modal-hd"></div> <div id="confirm-content" class="jsk-modal-bd"></div> <div class="jsk-modal-footer"><span data-jsk-modal-cancel="" data-jsk-modal-close="" class="jsk-btn jsk-btn-success">取消</span> <span data-jsk-modal-confirm="" data-jsk-modal-close="" class="jsk-btn jsk-btn-default">提交</span></div></div></div> <div tabindex="-1" id="submit-history" class="jsk-modal"><div class="jsk-modal-dialog"><div class="jsk-modal-hd"><h3 class="jsk-margin-bottom-0">提交历史</h3> <span data-jsk-modal-close="" class="jsk-close jsk-fr">×</span></div> <div class="jsk-modal-bd"><table class="jsk-table jsk-table-centered jsk-table-striped jsk-margin-0 jsk-text-nowrap"><thead><tr><th>判题状态</th> <th>提交时间</th> <th>运行时间</th> <th>运行内存</th> <th>使用语言</th></tr></thead> <tbody></tbody></table></div></div></div> <div data-v-82f165f8="" class="jsk-modal judge-detail-modal" style="height: 200px;"><div data-v-82f165f8="" class="jsk-modal-dialog"><div data-v-82f165f8="" class="jsk-modal-hd"><h3 data-v-82f165f8="" class="jsk-popup-title jsk-margin-bottom-0">
+                
+            </h3> <span data-v-82f165f8="" data-jsk-modal-close="" data-jsk-modal-cancel="" class="jsk-close jsk-fr">×</span></div> <div data-v-82f165f8="" class="jsk-modal-bd"><table data-v-82f165f8="" class="jsk-table jsk-table-centered jsk-table-striped jsk-margin-0 jsk-text-nowrap"><thead data-v-82f165f8=""><tr data-v-82f165f8=""><td data-v-82f165f8="">测试点</td> <td data-v-82f165f8="">判题状态</td> <td data-v-82f165f8="">运行时间</td> <td data-v-82f165f8="">运行内存</td></tr></thead> <tbody data-v-82f165f8=""></tbody></table></div></div></div></div> <!-- /.jsk-container  -->
+
+    <script type="text/javascript" src="./Rolling The Polygon - 计蒜客_files/raven--b6a85b.js" charset="utf-8"></script><script>
+Raven.config('//7f13df6c3b314350b2747b6b76e04b6e@sentry.jisuanke.com/7', {
+            whitelistUrls: [
+                /jisuanke\.com/
+            ]
+}).install();</script><script type="text/javascript">
+var _hmt = _hmt || [];
+(function() {
+    var hm = document.createElement("script");
+    hm.src = "//hm.baidu.com/hm.js?183e07aa097a1758fd6d45349e74c327";
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(hm, s);
+})();
+</script>    <script type="text/javascript">var jump_hint=false;var has_saved=false;var oi_contest=false;var next_url="\/\/www.jisuanke.com\/contest\/2991";var ioi_contest=false;var submit_chance=50;var problem_naming="B";</script>    <script type="text/javascript">var is_contest=true;var editor_mode="jsk-monokai";var init_data={"codes":{"c":"","c++":"","c++14":"","java":"","python":"","python3":""},"locks":{"c":[],"c++":[],"c++14":[],"java":[],"python":[],"python3":[]}};var nanti_id=41286;var chapter_id=22824;var multi_lang_files={"c++":["main.cpp"],"c++14":["main.cpp"],"c":["main.c"],"java":["Main.java"],"python":["main.py"],"python3":["main.py"]};var file_num=1;var user_language="c++14";var user_editor_theme="jsk-monokai";var user_editor_mode="sublime";var user_tab_size=4;var hide_locked_code=false;var user_auto_complete=1;var description="<p>Bahiyyah has a convex polygon with $n$ vertices $P_0, P_1, \\cdots , P_{n-1}$ in the counterclockwise order. Two vertices with consecutive indexes are adjacent, and besides, $P_0$ and $P_{n-1}$ are adjacent. She also assigns a point Q inside the polygon which may appear on the border.<\/p><p>Now, Bahiyyah decides to roll the polygon along a straight line and calculate the length of the trajectory (or track) of point $Q$.<\/p><p>To help clarify, we suppose $P_n = P_0, P_{n+1} = P_1$ and assume the edge between $P_0$ and $P_1$ is lying on the line at first. At that point when the edge between $P_{i-1}$ and $P_i$ lies on the line, Bahiyyah rolls the polygon forward rotating the polygon along the vertex $P_i$ until the next edge (which is between $P_i$ and $P_{i+1}$) meets the line. She will stop the rolling when the edge between $P_n$ and $P_{n+1}$ (which is same as the edge between $P_0$ and $P_1$) meets the line again.<\/p><h3>Input<\/h3><p>The input contains several test cases, and the first line is a positive integer $T$ indicating the number of test cases which is up to $50$.<\/p><p>For each test case, the first line contains an integer $n (3 \\le n \\le 50)$ indicating the number of vertices of the given convex polygon. Following $n$ lines describe vertices of the polygon in the counterclockwise order. The i-th line of them contains two integers $x_{i-1}$ and $y_{i-1}$, which are the coordinates of point $P_{i-1}$. The last line contains two integers $x_Q$ and $y_Q$, which are the coordinates of point $Q$.<\/p><p>We guarantee that all coordinates are in the range of $-10^3$ to $10^3$, and point $Q$ is located inside the polygon or lies on its border.<\/p><h3>Output<\/h3><p>For each test case, output a line containing <strong>Case #x: y<\/strong>, where $x$ is the test case number starting from $1$, and $y$ is the length of the trajectory of the point $Q$ rounded to $3$ places. We guarantee that $4$-th place after the decimal point in the precise answer would not be $4$ or $5$.<\/p>";var hint="";var supported_languages=["c++","c++14","c","java","python","python3"];var supported_languages_info={"c":{"key":"c","name":"C","iname":"c","title":"C \u8bed\u8a00","mime":"text\/x-csrc","filename":"main.c","ext":"c"},"c_noi":{"key":"c_noi","name":"C","iname":"c","title":"C \u8bed\u8a00 (NOI)","mime":"text\/x-csrc","filename":"main.c","ext":"c"},"c++":{"key":"c++","name":"C++","iname":"c++","title":"C++ \u8bed\u8a00 (C++11)","mime":"text\/x-c++src","filename":"main.cpp","ext":"cpp"},"c++14":{"key":"c++14","name":"C++","iname":"c++","title":"C++ \u8bed\u8a00 (C++14)","mime":"text\/x-c++src","filename":"main.cpp","ext":"cpp"},"c++_noi":{"key":"c++_noi","name":"C++","iname":"c++","title":"C++ \u8bed\u8a00 (NOI)","mime":"text\/x-c++src","filename":"main.cpp","ext":"cpp"},"java":{"key":"java","name":"Java","iname":"java","title":"Java \u8bed\u8a00","mime":"text\/x-java","filename":"Main.java","ext":"java"},"python":{"key":"python","name":"Python","iname":"python","title":"Python \u8bed\u8a00 (2.7)","mime":"text\/x-python","filename":"main.py","ext":"py"},"python3":{"key":"python3","name":"Python","iname":"python","title":"Python \u8bed\u8a00 (3.5)","mime":"text\/x-python","filename":"main.py","ext":"py"},"ruby":{"key":"ruby","name":"Ruby","iname":"ruby","title":"Ruby \u8bed\u8a00","mime":"text\/x-ruby","filename":"main.rb","ext":"rb"},"blockly":{"key":"blockly","name":"Python","iname":"python","title":"Blockly \u8bed\u8a00","mime":"text\/x-python","filename":"main.bl","ext":"bl"},"octave":{"key":"octave","name":"Octave","iname":"octave","title":"Octave \u8bed\u8a00","mime":"text\/x-octave","filename":"main.m","ext":"m"},"pascal":{"key":"pascal","name":"Pascal","iname":"pascal","title":"Pascal \u8bed\u8a00","mime":"text\/x-pascal","filename":"main.pas","ext":"pas"},"go":{"key":"go","name":"Go","iname":"go","title":"Go \u8bed\u8a00","mime":"text\/x-go","filename":"main.go","ext":"go"}};var samples=[[0,"4\n4\n0 0\n2 0\n2 2\n0 2\n1 1\n3\n0 0\n2 1\n1 2\n1 1\n5\n0 0\n1 0\n2 2\n1 3\n-1 2\n0 0\n6\n0 0\n3 0\n4 1\n2 2\n1 2\n-1 1\n1 0","Case #1: 8.886\nCase #2: 7.318\nCase #3: 12.102\nCase #4: 14.537","<p>The following figure is the the trajectory of the point $Q$ in the first sample test case.<\/p><p><img src=\"https:\/\/res.jisuanke.com\/img\/upload\/20190827\/9d047232957ecf36450e9c06240a15f0118ffd2f.png\" alt=\"\"><\/p>"],[0,"","",""],[0,"","",""]];var special_judge=0;var diff_level=1;var has_standard_or_solution=true;var challenge={"id":41286,"title":"Rolling The Polygon","uid":193729,"language":["c++","c++14","c","java","python","python3"],"accept":440,"submit":569,"time_limit":1000,"mem_limit":262144,"difficulty":1,"score":1,"description":"<p>Bahiyyah has a convex polygon with $n$ vertices $P_0, P_1, \\cdots , P_{n-1}$ in the counterclockwise order. Two vertices with consecutive indexes are adjacent, and besides, $P_0$ and $P_{n-1}$ are adjacent. She also assigns a point Q inside the polygon which may appear on the border.<\/p><p>Now, Bahiyyah decides to roll the polygon along a straight line and calculate the length of the trajectory (or track) of point $Q$.<\/p><p>To help clarify, we suppose $P_n = P_0, P_{n+1} = P_1$ and assume the edge between $P_0$ and $P_1$ is lying on the line at first. At that point when the edge between $P_{i-1}$ and $P_i$ lies on the line, Bahiyyah rolls the polygon forward rotating the polygon along the vertex $P_i$ until the next edge (which is between $P_i$ and $P_{i+1}$) meets the line. She will stop the rolling when the edge between $P_n$ and $P_{n+1}$ (which is same as the edge between $P_0$ and $P_1$) meets the line again.<\/p><h3>Input<\/h3><p>The input contains several test cases, and the first line is a positive integer $T$ indicating the number of test cases which is up to $50$.<\/p><p>For each test case, the first line contains an integer $n (3 \\le n \\le 50)$ indicating the number of vertices of the given convex polygon. Following $n$ lines describe vertices of the polygon in the counterclockwise order. The i-th line of them contains two integers $x_{i-1}$ and $y_{i-1}$, which are the coordinates of point $P_{i-1}$. The last line contains two integers $x_Q$ and $y_Q$, which are the coordinates of point $Q$.<\/p><p>We guarantee that all coordinates are in the range of $-10^3$ to $10^3$, and point $Q$ is located inside the polygon or lies on its border.<\/p><h3>Output<\/h3><p>For each test case, output a line containing <strong>Case #x: y<\/strong>, where $x$ is the test case number starting from $1$, and $y$ is the length of the trajectory of the point $Q$ rounded to $3$ places. We guarantee that $4$-th place after the decimal point in the precise answer would not be $4$ or $5$.<\/p>","sample_input":"4\n4\n0 0\n2 0\n2 2\n0 2\n1 1\n3\n0 0\n2 1\n1 2\n1 1\n5\n0 0\n1 0\n2 2\n1 3\n-1 2\n0 0\n6\n0 0\n3 0\n4 1\n2 2\n1 2\n-1 1\n1 0","sample_output":"Case #1: 8.886\nCase #2: 7.318\nCase #3: 12.102\nCase #4: 14.537","sample_explain":"<p>The following figure is the the trajectory of the point $Q$ in the first sample test case.<\/p><p><img src=\"https:\/\/res.jisuanke.com\/img\/upload\/20190827\/9d047232957ecf36450e9c06240a15f0118ffd2f.png\" alt=\"\"><\/p>","sample_input2":"","sample_output2":"","sample_explain2":"","sample_input3":"","sample_output3":"","sample_explain3":"","hint":"","solution":null,"source":null,"case":2,"hide":1,"special_judge":0,"hide_lock":0,"diff_level":1,"filename":null,"deleted_at":null,"sample_is_file":0,"sample2_is_file":0,"sample3_is_file":0,"rate":77.33,"samples":[[0,"4\n4\n0 0\n2 0\n2 2\n0 2\n1 1\n3\n0 0\n2 1\n1 2\n1 1\n5\n0 0\n1 0\n2 2\n1 3\n-1 2\n0 0\n6\n0 0\n3 0\n4 1\n2 2\n1 2\n-1 1\n1 0","Case #1: 8.886\nCase #2: 7.318\nCase #3: 12.102\nCase #4: 14.537","<p>The following figure is the the trajectory of the point $Q$ in the first sample test case.<\/p><p><img src=\"https:\/\/res.jisuanke.com\/img\/upload\/20190827\/9d047232957ecf36450e9c06240a15f0118ffd2f.png\" alt=\"\"><\/p>"],[0,"","",""],[0,"","",""]],"files":["main.cpp"],"status":"no-attempt"};var files=["main.cpp"];var language="c++14";var language_info={"key":"c++14","name":"C++","iname":"c++","title":"C++ \u8bed\u8a00 (C++14)","mime":"text\/x-c++src","filename":"main.cpp","ext":"cpp"};var check_status="no-attempt";</script>    <script type="text/javascript" src="./Rolling The Polygon - 计蒜客_files/jsk-base--09df29.js" charset="utf-8"></script><script type="text/javascript" src="./Rolling The Polygon - 计蒜客_files/jsk-widget--f40993.js" charset="utf-8"></script>    <script type="text/javascript" src="./Rolling The Polygon - 计蒜客_files/pack--0fcded.js" charset="utf-8"></script>
+
+<div class="jsk-popover jsk-popover-sm jsk-popover-top" id="jsk-popover-a9lfd" style="top: 26.6783px; left: 106.636px;"><div class="jsk-popover-inner">时间限制</div><div class="jsk-popover-caret"></div></div><div class="jsk-popover jsk-popover-sm jsk-popover-top" id="jsk-popover-t43ez" style="top: 26.6783px; left: 288.135px;"><div class="jsk-popover-inner">内存限制</div><div class="jsk-popover-caret"></div></div><div class="jsk-popover jsk-popover-success jsk-popover-sm jsk-popover-top" id="jsk-popover-4sz8z" style="top: 95.7233px; left: 396.558px; display: none;"><div class="jsk-popover-inner">复制成功</div><div class="jsk-popover-caret"></div></div><div class="jsk-popover jsk-popover-success jsk-popover-sm jsk-popover-top" id="jsk-popover-nyj3f" style="top: 837.583px; left: 396.558px; display: none;"><div class="jsk-popover-inner">复制成功</div><div class="jsk-popover-caret"></div></div><div id="lightboxOverlay" class="lightboxOverlay" style="display: none;"></div><div id="lightbox" class="lightbox" style="display: none;"><div class="lb-outerContainer"><div class="lb-container"><img class="lb-image" src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" alt=""><div class="lb-nav"><a class="lb-prev" aria-label="Previous image" href="https://www.jisuanke.com/contest/2991/261479"></a><a class="lb-next" aria-label="Next image" href="https://www.jisuanke.com/contest/2991/261479"></a></div><div class="lb-loader"><a class="lb-cancel"></a></div></div></div><div class="lb-dataContainer"><div class="lb-data"><div class="lb-details"><span class="lb-caption"></span><span class="lb-number"></span></div><div class="lb-closeContainer"><a class="lb-close"></a></div></div></div></div><div class="jsk-popover jsk-popover-sm jsk-popover-top" id="jsk-popover-x9blc" style="top: 77.6726px; left: 106.636px;"><div class="jsk-popover-inner">时间限制</div><div class="jsk-popover-caret"></div></div><div class="jsk-popover jsk-popover-sm jsk-popover-bottom" id="jsk-popover-k65o6" style="display: none; top: -2005.7px; left: 354.654px;"><div class="jsk-popover-inner">内存限制</div><div class="jsk-popover-caret"></div></div><div class="jsk-popover jsk-popover-success jsk-popover-sm jsk-popover-bottom" id="jsk-popover-rdqt7" style="display: none; top: -556.714px; left: 456.257px;"><div class="jsk-popover-inner">复制成功</div><div class="jsk-popover-caret"></div></div><div class="jsk-popover jsk-popover-success jsk-popover-sm jsk-popover-top" id="jsk-popover-qdp77" style="top: 2165.19px; left: 383.271px; display: none;"><div class="jsk-popover-inner">复制成功</div><div class="jsk-popover-caret"></div></div><div class="blocklyWidgetDiv"></div><div class="blocklyTooltipDiv"></div></body></html>
